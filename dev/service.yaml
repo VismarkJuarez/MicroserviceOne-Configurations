@@ -1,11 +1,13 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  labels:
-    app: grafana-argo-cd
-  name: grafana-argo-cd
+  name: microserviceone-service
 spec:
   ports:
-  - port: 3000
-  protocol: TCP
-  targetPort: 3000
+    - port: 30008 # The port on the Service to expose
+      targetPort: 2019 # The port on the destination pod to bind to
+      nodePort: 30008 # The port the Service will listen to at the Node level
+      protocol: TCP 
+  selector:
+    app: microserviceone # As specified on the pod-definition
+  type: NodePort # The type of Service this service is (as opposed to ClusterIP, Load Balancer, etc)

@@ -1,20 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: microserviceone
   labels:
-    app: grafana-argo-cd
-  name: grafana-argo-cd
+    app: microserviceone
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: grafana-argo-cd
+      app: microserviceone
+  template:
+    metadata:
+      labels:
+        app: microserviceone
     spec:
       containers:
-      - image: grafana/grafana:latest
-        imagePullPolicy: Always
-        name: grafana-argo-cd
+      - name: microserviceone
+        image: vismarkjuarez1994/microserviceone
         ports:
-        - containerPort: 3000
-          protocol: TCP
-      restartPolicy: Always
+        - containerPort: 2019
+        env:
+          - name: FIRST_NAME
+            value: Mr.Kubernetes
+          - name: AGE
+            value: "100"
