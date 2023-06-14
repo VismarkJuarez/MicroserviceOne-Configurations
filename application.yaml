@@ -1,0 +1,25 @@
+apiVersion: argoproject.io/v1alpha
+kind: Application
+metadata:
+  name: my-app-argo-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repo:
+      repoURL: https://github.com/VismarkJuarez/MicroserviceOne-Configurations.git
+      targetRevision: head # last commit in repository
+      path: dev #since we want to track configs in the dev directory
+
+  destination:
+    server: https://kubernetes.default.service # internal service name of k8s server
+    namespace: myapp-argocd #the namespace where we want argoCd to deploy our resources
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true #creates namespace if it doesn't already exist
+    
+    automated:
+      selfHeal: true # undoes any manual changes made to the deployments
+      prune: true # whether we delete re-named or deleted resources
