@@ -7,9 +7,8 @@ spec:
   project: default
 
   source:
-    repoURL:
       repoURL: https://github.com/VismarkJuarez/MicroserviceOne-Configurations.git
-      targetRevision: head # last commit in repository
+      targetRevision: HEAD # last commit in repository
       path: dev #since we want to track configs in the dev directory
 
   destination:
