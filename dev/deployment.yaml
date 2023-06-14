@@ -2,20 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: grafana
-  name: grafana
+    app: grafana-argo-cd
+  name: grafana-argo-cd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: grafana
+      app: grafana-argo-cd
     spec:
       containers:
       - image: grafana/grafana:latest
         imagePullPolicy: Always
-        name: grafana
+        name: grafana-argo-cd
         ports:
         - containerPort: 3000
           protocol: TCP
-        resources: {}
       restartPolicy: Always
