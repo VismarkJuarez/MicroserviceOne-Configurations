@@ -1,7 +1,7 @@
-apiVersion: argoproject.io/v1alpha
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: my-app-argo-application
+  name: microserviceone-argo-application
   namespace: argocd
 spec:
   project: default
